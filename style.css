@@ -1,3 +1,19 @@
-h1 {
-  color: red;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+@media (min-width: 993px) {
+  h1 {
+    color: rgb(56, 32, 163);
+  }
+  
+  .home-container {
+    max-height: 100vh;
+  }
+  
+  .home-background {
+    max-width: 50%;
+  }
 }
