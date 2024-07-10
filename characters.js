@@ -5,7 +5,7 @@ const characters = [
     type: 'Lightning',
     traits: [
       { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
+      { name: 'mind', score: 2 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
       { name: 'identity', score: 1 },
@@ -16,10 +16,10 @@ const characters = [
     path: 'Erudition',
     type: 'Physical',
     traits: [
-      { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 0 },
-      { name: 'tactics', score: 0 },
+      { name: 'energy', score: 0 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -2 },
       { name: 'identity', score: 1 },
     ],
   },
@@ -28,10 +28,10 @@ const characters = [
     path: 'Destruction',
     type: 'Lightning',
     traits: [
-      { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
+      { name: 'energy', score: 2 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: 0 },
       { name: 'identity', score: 1 },
     ],
   },
@@ -40,10 +40,10 @@ const characters = [
     path: 'Harmony',
     type: 'Fire',
     traits: [
-      { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 0 },
+      { name: 'energy', score: 0 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -2 },
       { name: 'identity', score: 0 },
     ],
   },
@@ -52,10 +52,10 @@ const characters = [
     path: 'Preservation',
     type: 'Imaginary',
     traits: [
-      { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
+      { name: 'energy', score: -1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: -2 },
       { name: 'identity', score: 1 },
     ],
   },
@@ -64,7 +64,7 @@ const characters = [
     path: 'Abundance',
     type: 'Lightning',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -76,7 +76,7 @@ const characters = [
     path: 'Nihility',
     type: 'Wind',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -88,7 +88,7 @@ const characters = [
     path: 'Destruction',
     type: 'Wind',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -100,7 +100,7 @@ const characters = [
     path: 'The Hunt',
     type: 'Physical',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -136,7 +136,7 @@ const characters = [
     path: 'The Hunt',
     type: 'Wind',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -148,7 +148,7 @@ const characters = [
     path: 'The Hunt',
     type: 'Imaginary',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -172,7 +172,7 @@ const characters = [
     path: 'Preservation',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -184,7 +184,7 @@ const characters = [
     path: 'Abundance',
     type: 'Fire',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -196,7 +196,7 @@ const characters = [
     path: 'Preservation',
     type: 'Ice',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -208,7 +208,7 @@ const characters = [
     path: 'Nihility',
     type: 'Fire',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -220,7 +220,7 @@ const characters = [
     path: 'Harmony',
     type: 'Physical',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -244,7 +244,7 @@ const characters = [
     path: 'Erudition',
     type: 'Fire',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -256,7 +256,7 @@ const characters = [
     path: 'Destruction',
     type: 'Fire',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -268,7 +268,7 @@ const characters = [
     path: 'Abundance',
     type: 'Wind',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -280,7 +280,7 @@ const characters = [
     path: 'Erudition',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -292,7 +292,7 @@ const characters = [
     path: 'Erudition',
     type: 'Lightning',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -316,7 +316,7 @@ const characters = [
     path: 'Nihility',
     type: 'Lightning',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -328,7 +328,7 @@ const characters = [
     path: 'Nihility',
     type: 'Physical',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -352,7 +352,7 @@ const characters = [
     path: 'Abundance',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -364,7 +364,7 @@ const characters = [
     path: 'Preservation',
     type: 'Ice',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -388,7 +388,7 @@ const characters = [
     path: 'Abundance',
     type: 'Physical',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -400,7 +400,7 @@ const characters = [
     path: 'Nihility',
     type: 'Ice',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -412,7 +412,7 @@ const characters = [
     path: 'Erudition',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -448,7 +448,7 @@ const characters = [
     path: 'Nihility',
     type: 'Wind',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -460,7 +460,7 @@ const characters = [
     path: 'The Hunt',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -472,7 +472,7 @@ const characters = [
     path: 'Erudition',
     type: 'Lightning',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -484,7 +484,7 @@ const characters = [
     path: 'Nihility',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -496,7 +496,7 @@ const characters = [
     path: 'Harmony',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -508,7 +508,7 @@ const characters = [
     path: 'The Hunt',
     type: 'Physical',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -520,7 +520,7 @@ const characters = [
     path: 'Harmony',
     type: 'Lightning',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -532,7 +532,7 @@ const characters = [
     path: 'The Hunt',
     type: 'Fire',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -544,7 +544,7 @@ const characters = [
     path: 'Destruction',
     type: 'Physical',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -556,7 +556,7 @@ const characters = [
     path: 'Nihility',
     type: 'Imaginary',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -568,7 +568,7 @@ const characters = [
     path: 'Destruction',
     type: 'Quantum',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -580,7 +580,7 @@ const characters = [
     path: 'The Hunt',
     type: 'Ice',
     traits: [
-      { name: 'energy', score: 1 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
@@ -592,8 +592,8 @@ const characters = [
     path: 'Harmony',
     type: 'Imaginary',
     traits: [
-      { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
+      { name: 'energy', score: 0 },
+      { name: 'mind', score: 2 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
       { name: 'identity', score: 1 },

@@ -15,7 +15,7 @@ button {
   font-family: 'Noto Sans';
 }
 
-.home-container {
+.container {
   display: flex; /* Use flexbox */
   flex-direction: column; /* Stack children vertically */
   justify-content: center; /* Center horizontally */
@@ -51,7 +51,7 @@ button {
   padding-right: 15px;
 }
 
-.home-button {
+.progress-button {
   font-size: large;
   background-color: rgb(56, 32, 163);
   color: white;
@@ -60,12 +60,16 @@ button {
   margin: 20px;
 }
 
-.home-button:hover {
+.progress-button:hover {
   background-color: rgb(255, 255, 255);
   color: black;
 }
 
-.home-button:active {
+.progress-button:active {
   background-color: rgb(56, 32, 163);
   color: white;
+}
+
+#question-container {
+  display: none;
 }
