@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Honkai Star Rail Personality Quiz</title>
+  <title>Honkai Personify</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans">
+  <link href="./assets/favicon.png" rel="icon" type="image/x-icon">
 </head>
 <body>
   
@@ -16,8 +17,19 @@
       <img class="home-mini" src="./assets/mini1.gif"/>
     </div>
     <h4 class="home-title">A personality quiz inspired by Honkai Star Rail, using MBTI personality types.</h4>
-    <img class="home-background" src="./assets/home.png" />
+    <img class="home-background" id="background" src="./assets/mini1.gif" />
     <button class="progress-button" id="start-button">Take quiz!</button>
+  </div>
+
+  <div class="container" id="question-container" align="center">
+    <div class="title-container" align="center">
+      <img class="home-mini" src="./assets/loading.gif"/>
+      <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Noto+Sans&weight=600&size=32&duration=2000&pause=1000&color=3820A3&center=true&vCenter=true&random=false&width=320&height=40&lines=Calculating+results..." alt="Typing SVG" /></a>
+      <img class="home-mini" src="./assets/loading.gif"/>
+    </div>
+    <h4 class="home-title">A personality quiz inspired by Honkai Star Rail, using MBTI personality types.</h4>
+    <img class="home-background" src="./assets/loading.gif" />
+    <button class="progress-button" id="start-button">I'm ready!</button>
   </div>
 
   <script src="app.js" type="module"></script>
