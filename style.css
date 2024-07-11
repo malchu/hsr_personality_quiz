@@ -89,6 +89,60 @@ button {
   display: none;
 }
 
+#choices-container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.choice-marker {
+  text-align: center;
+  justify-content: center;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+#choices-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.choice-item {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: large;
+  color: #FFFFFF; /* Text color */
+  background-color: transparent; /* Silver Wolf primary color */
+  border: 2px solid #41416A; /* Match border color */
+  border-radius: 25px; /* Make it rounded */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 5px rgba(65, 65, 106, 0.5); /* Ring border effect *//* Ring border effect */
+}
+
+.choice-item:hover {
+  color: #282846;
+  background-color: #282846; /* Darken button color on hover */
+  border-color: #282846; /* Match border color on hover */
+  box-shadow: 0 0 0 10px rgba(65, 65, 106, 0.3); /* Increase ring size on hover */
+}
+
+.choice-button:active {
+  color: #1e1e34;
+  background-color: #1e1e34; /* Darkest shade for active state */
+  border-color: #1e1e34; /* Match border color on active state */
+  box-shadow: 0 0 0 10px rgba(65, 65, 106, 0.3), inset 0 0 5px rgba(0, 0, 0, 0.5); /* Increase ring size on active state and add inner shadow */
+
+}
+
+.choice-item.selected {
+  background-color: #41416A;
+  color: #41416A;
+}
+
 /* Modal styles */
 .modal {
   display: none; /* Hidden by default */

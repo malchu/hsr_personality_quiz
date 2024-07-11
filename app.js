@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function()
       "./assets/ratio.gif",
       "./assets/bailu.gif",
       "./assets/sparkle.gif",
+      "./assets/firefly.gif",
     ];
 
     let currentImageIndex = 0;
@@ -32,9 +33,13 @@ document.addEventListener('DOMContentLoaded', function()
     // Call showNextSlide to start the slideshow
     showNextSlide();
     
+
+
     const homeContainer = document.getElementById("home-container");
     const questionContainer = document.getElementById("question-container");
     let index = 0;
+    let selectedChoice = null;
+    let answers = [];
 
     const button = document.getElementById("start-button");
     button.addEventListener("click", function() 
@@ -47,8 +52,15 @@ document.addEventListener('DOMContentLoaded', function()
     
     questionContainer.addEventListener("click", (event) => { 
       if (event.target && event.target.id === "next-button") {
-        index++;
-        loadQuestion(index);
+        if (selectedChoice) {
+          answers.push(Number(selectedChoice.id));
+          console.log(answers);
+          index++;
+          loadQuestion(index);
+          selectedChoice = null; // Reset the selected choice
+        } else {
+          alert("Please select a choice before proceeding.");
+        }
       }
 
       if (event.target && event.target.id === "results-button") {
@@ -81,11 +93,12 @@ document.addEventListener('DOMContentLoaded', function()
         homeContainer.style.display = "flex";
         questionContainer.style.display = "none";
         index = 0;
+        answers = [];
       }
     });
 
     function loadQuestion(index) {
-      const numberOfQuestions = 3;
+      const numberOfQuestions = 10;
       questionContainer.innerHTML = "";
 
       if (index < numberOfQuestions) {
@@ -93,13 +106,43 @@ document.addEventListener('DOMContentLoaded', function()
         questionContainer.innerHTML = `
             <div class="title-container">
               <img class="home-mini" src="./assets/mini.gif"/>
-              <h1 class="home-title" >Question ${index + 1}</h1>
+              <h1 class="home-title" >Question ${index + 1} of ${numberOfQuestions}</h1>
               <img class="home-mini" src="./assets/mini1.gif"/>
             </div>
             <h4 class="home-title">${question.text}</h4>
             <img class="home-background" src="./assets/march7.gif" />
+            <div id="choices-container">
+              <h2 class="choice-marker">Disagree</h2>
+              <ul id="choices-list">
+                <li class="choice-item" id="-2">i</li>
+                <li class="choice-item" id="-1">i</li>
+                <li class="choice-item" id="0">i</li>
+                <li class="choice-item" id="1">i</li>
+                <li class="choice-item" id="2">i</li>
+              </ul>
+              <h2 class="choice-marker">Agree</h2>
+            </div>
             <button class="progress-button" id="next-button">Next Question</button>
         `;
+
+        const choiceItems = document.querySelectorAll(".choice-item");
+        const nextButton = document.getElementById("next-button");
+
+        function selectChoice(item) {
+          if (selectedChoice) {
+            selectedChoice.classList.remove("selected");
+          }
+          item.classList.add("selected");
+          selectedChoice = item;
+          nextButton.disabled = false; // Enable the next button when a choice is selected
+        }
+  
+        choiceItems.forEach(item => {
+          item.addEventListener("click", function() {
+            selectChoice(item);
+          });
+        });
+
       } else {
         questionContainer.innerHTML = `
             <div class="title-container">
