@@ -50,22 +50,42 @@ document.addEventListener('DOMContentLoaded', function()
         index++;
         loadQuestion(index);
       }
-    });
 
-    questionContainer.addEventListener("click", (event) => { 
       if (event.target && event.target.id === "results-button") {
         displayResults();
       }
-    });
 
-    questionContainer.addEventListener("click", (event) => {
       if (event.target && event.target.id === "share-button") {
-        
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        modal.style.display = "flex";
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      }
+
+      if (event.target && event.target.id === "restart-button") {
+        homeContainer.style.display = "flex";
+        questionContainer.style.display = "none";
+        index = 0;
       }
     });
 
     function loadQuestion(index) {
-      const numberOfQuestions = 25;
+      const numberOfQuestions = 3;
       questionContainer.innerHTML = "";
 
       if (index < numberOfQuestions) {
@@ -102,7 +122,22 @@ document.addEventListener('DOMContentLoaded', function()
             <img class="home-mini" src="./assets/march7.gif"/>
           </div>
           <img class="home-background" src="./assets/march7.gif" />
-          <button class="progress-button" id="share-button">Share</button>
+          <span>
+            <button class="progress-button" id="share-button">Share!</button>
+            <button class="progress-button" id="restart-button">Retake Quiz!</button>
+          <span/>
+            
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Share this quiz!</h2>
+              <div class="share-links">
+                <a href="#" class="share-link" id="share-instagram">Instagram</a>
+                <a href="#" class="share-link" id="share-twitter">Twitter</a>
+                <a href="#" class="share-link" id="share-copy">Copy Link</a>
+              </div>
+            </div>
+          </div>
         `;
     }
   }
