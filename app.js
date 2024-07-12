@@ -230,13 +230,18 @@ document.addEventListener('DOMContentLoaded', function()
           </div>
           <img class="home-background" src="./assets/img/characters/${match}.png" alt="">
           <div class="button-container">
-            <button class="progress-button" id="restart-button">Retake Quiz!</button>
+            <button class="progress-button" id="restart-button">Play again!</button>
           </div>
         `;
     }
 
     const instagram = document.getElementById("instagram");
     instagram.addEventListener("click", () => {
+      copyCurrentUrl();
+    });
+
+    const threads = document.getElementById("threads");
+    threads.addEventListener("click", () => {
       copyCurrentUrl();
     });
 

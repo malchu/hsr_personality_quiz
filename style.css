@@ -29,6 +29,7 @@ button {
   max-height: 100%; /* Adjust height for full viewport height */
   max-width: 100%; /* Ensure container doesn't exceed the viewport width */
   margin: 20px 20px;
+  padding: 0px 0px 20px 0px;
   box-sizing: border-box;
 }
 
@@ -58,7 +59,7 @@ button {
 }
 
 .progress-button {
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
   margin: 10px 20px 10px 20px;
   font-size: large;
   color: #FFFFFF; /* Text color */
@@ -167,7 +168,7 @@ button {
 
 .share-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -199,7 +200,7 @@ button {
   font-size: 16px;
 }
 
-.twitter-share-button .twitter-logo {
+.twitter-share-button .twitter-logo, .instagram-share-button .instagram-logo, .copy-share-button .copy-logo, .threads-share-button .threads-logo {
   width: 24px;
   height: 24px;
   margin-right: 10px;
@@ -230,13 +231,6 @@ button {
   font-size: 16px;
 }
 
-.instagram-share-button .instagram-logo {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  fill: #FFFFFF;
-}
-
 .instagram-share-button:hover {
   background-color: #FFFFFF;
   color: #E4405F;
@@ -261,13 +255,6 @@ button {
   font-size: 16px;
 }
 
-.copy-share-button .copy-logo {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  fill: #FFFFFF;
-}
-
 .copy-share-button:hover {
   background-color: #FFFFFF;
   color: #41416A;
@@ -279,13 +266,43 @@ button {
   fill: #41416A;
 }
 
+.threads-share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #000000; /* Instagram Pink */
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid #000000;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.threads-share-button:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-color: #000000;
+  cursor: pointer;
+}
+
+.threads-share-button:hover .threads-logo {
+  fill: #000000;
+}
+
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
-  background-color: rgb(0, 124, 124);
+  padding-bottom: 20px;
+  background-color: rgb(63, 165, 165);
+}
+
+.author {
+  text-decoration: none;
+  color: black;
 }
 
 @media screen and (max-width: 750px) { 
@@ -327,34 +344,16 @@ button {
     padding: 0px 10px;
   }
 
-  .twitter-share-button {
+  .share-buttons {
+    flex-direction: column;
+  }
+
+  .twitter-share-button, .instagram-share-button, .copy-share-button, .threads-share-button {
     padding: 8px 16px;
     font-size: 14px;
   }
 
-  .twitter-share-button .twitter-logo {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-  }
-
-  .instagram-share-button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  .instagram-share-button .instagram-logo {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-  }
-
-  .copy-share-button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  .copy-share-button .copy-logo {
+  .twitter-share-button .twitter-logo, .instagram-share-button .instagram-logo, .copy-share-button .copy-logo, .threads-share-button .threads-logo {
     width: 20px;
     height: 20px;
     margin-right: 8px;
