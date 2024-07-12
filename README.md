@@ -1,1 +1,1 @@
-# hsr_personality_quiz
+# Identity Universe (Honkai Star Rail Personailty Quiz)
