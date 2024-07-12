@@ -28,16 +28,7 @@ button {
   height: auto; /* Maintain aspect ratio */
   max-height: 100%; 
   width: auto; /* Maintain aspect ratio */
-  max-width: 80%;
-}
-
-@media (min-width: 600px) {
-  .home-background {
-    height: auto; /* Maintain aspect ratio */
-    max-height: 100%; 
-    width: auto; /* Maintain aspect ratio */
-    max-width: 20%;
-  }
+  max-width: 20%;
 }
 
 .home-title {
@@ -141,6 +132,39 @@ button {
 .choice-item.selected {
   background-color: #41416A;
   color: #41416A;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 750px) {
+  h4 {
+    margin: 0px 30px;
+  }
+  
+  .container {
+    margin: 1px;
+  }
+
+  .home-background {
+    height: auto; /* Maintain aspect ratio */
+    max-height: 100%; 
+    width: auto; /* Maintain aspect ratio */
+    max-width: 60%;
+  }
+
+  #choices-container {
+    font-size: 12px;
+  }
+
+  .choice-item {
+    padding: 0px 10px;
+    margin: 5px;
+  }
 }
 
 /* Modal styles */

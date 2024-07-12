@@ -225,11 +225,10 @@ document.addEventListener('DOMContentLoaded', function()
             <img class="home-mini" src="./assets/logo.png"/>
           </div>
           <img class="home-background" src="./assets/img/characters/${match}.png" />
-          <span>
+          <div class="button-container">
             <button class="progress-button" id="share-button">Share!</button>
             <button class="progress-button" id="restart-button">Retake Quiz!</button>
-          <span/>
-            
+          <div/>
           <div id="myModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>
