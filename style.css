@@ -5,8 +5,16 @@
   font-family: 'Noto Sans';
 }
 
+body {
+  min-height: 100vh;
+}
+
 h1 {
   color: #41416A;
+}
+
+h4 {
+  font-size: 16px;
 }
 
 button {
@@ -29,18 +37,16 @@ button {
   max-height: 100%; 
   width: auto; /* Maintain aspect ratio */
   max-width: 20%;
-}
-
-.home-title {
-  padding-bottom: 20px;
+  padding: 20px 0px 20px 0px;
 }
 
 .title-container {
   display: flex; /* Use flexbox */
   flex-direction: row; /* Stack children vertically */
-  align-items: baseline;
+  align-items: center;
   justify-content: center; /* Center horizontally */
   max-width: 100%; /* Ensure container doesn't exceed the viewport width */
+  padding-top: 20px;
 }
 
 .home-mini {
@@ -53,7 +59,7 @@ button {
 
 .progress-button {
   padding: 10px;
-  margin: 20px;
+  margin: 10px 20px 10px 20px;
   font-size: large;
   color: #FFFFFF; /* Text color */
   background-color: #41416A; /* Silver Wolf primary color */
@@ -83,7 +89,7 @@ button {
 #choices-container {
   display: flex;
   flex-direction: row;
-  margin: 20px auto;
+  margin: 20px 20px 0px 20px;
   text-align: center;
   justify-content: center;
 }
@@ -126,12 +132,15 @@ button {
   background-color: #1e1e34; /* Darkest shade for active state */
   border-color: #1e1e34; /* Match border color on active state */
   box-shadow: 0 0 0 10px rgba(65, 65, 106, 0.3), inset 0 0 5px rgba(0, 0, 0, 0.5); /* Increase ring size on active state and add inner shadow */
-
 }
 
 .choice-item.selected {
   background-color: #41416A;
   color: #41416A;
+}
+
+.choice-marker-phone {
+  display: none;
 }
 
 .button-container {
@@ -141,11 +150,153 @@ button {
   justify-content: center;
 }
 
-@media (max-width: 750px) {
+.share-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.share-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px;
+}
+
+.share {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+}
+
+.share-img {
+  width: 100%;
+  height: 100%;
+}
+
+.twitter-share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #1DA1F2; /* Twitter Blue */
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid #1DA1F2;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.twitter-share-button .twitter-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  fill: #FFFFFF;
+}
+
+.twitter-share-button:hover {
+  background-color: #FFFFFF;
+  color: #1DA1F2;
+  border-color: #1DA1F2;
+}
+
+.twitter-share-button:hover .twitter-logo {
+  fill: #1DA1F2;
+}
+
+.instagram-share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #E4405F; /* Instagram Pink */
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid #E4405F;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.instagram-share-button .instagram-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  fill: #FFFFFF;
+}
+
+.instagram-share-button:hover {
+  background-color: #FFFFFF;
+  color: #E4405F;
+  border-color: #E4405F;
+}
+
+.instagram-share-button:hover .instagram-logo {
+  fill: #E4405F;
+}
+
+.copy-share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #41416A; /* Instagram Pink */
+  color: #FFFFFF;
+  text-decoration: none;
+  border: 2px solid #41416A;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.copy-share-button .copy-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  fill: #FFFFFF;
+}
+
+.copy-share-button:hover {
+  background-color: #FFFFFF;
+  color: #41416A;
+  border-color: #41416A;
+  cursor: pointer;
+}
+
+.copy-share-button:hover .copy-logo {
+  fill: #41416A;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  background-color: rgb(0, 124, 124);
+}
+
+@media screen and (max-width: 750px) { 
+  h1 {
+    font-size: 22px;
+  }
+
   h4 {
     margin: 0px 30px;
   }
-  
+
   .container {
     margin: 1px;
   }
@@ -162,63 +313,50 @@ button {
   }
 
   .choice-item {
-    padding: 0px 10px;
-    margin: 5px;
+    padding: 7.5px 17.5px;
+    margin: 10px;
   }
-}
 
-/* Modal styles */
-.modal {
-  display: none; /* Hidden by default */
-  flex-direction: column;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px; /* Padding at the top */
-}
+  .choice-marker {
+    display: none;
+  }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto; /* 5% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 25px;
-  width: 40%; /* Could be more or less, depending on screen size */
-}
+  .choice-marker-phone {
+    display: block;
+    justify-content: center;
+    padding: 0px 10px;
+  }
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
+  .twitter-share-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+  .twitter-share-button .twitter-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
 
-.share-links {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 20px;
-}
+  .instagram-share-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 
-.share-link {
-  text-decoration: none;
-  color: #41416A; /* Silver Wolf primary color */
-  font-size: 18px;
-}
+  .instagram-share-button .instagram-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
 
-.share-link:hover {
-  color: #282846; /* Darken on hover */
+  .copy-share-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .copy-share-button .copy-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
 }

@@ -107,12 +107,12 @@ document.addEventListener('DOMContentLoaded', function()
         const question = questions[index];
         questionContainer.innerHTML = `
             <div class="title-container">
-              <img class="home-mini" src="./assets/logo.png"/>
+              <img class="home-mini" src="./assets/logo.png" alt="">
               <h1 class="home-title" >Question ${index + 1} of ${numberOfQuestions}</h1>
-              <img class="home-mini" src="./assets/logo.png"/>
+              <img class="home-mini" src="./assets/logo.png" alt="">
             </div>
-            <h4 class="home-title">${question.text}</h4>
-            <img class="home-background" src="./assets/march7.gif"" />
+            <h4>${question.text}</h4>
+            <img class="home-background" src="./assets/march7.gif" alt="">
             <div id="choices-container">
               <h2 class="choice-marker">Disagree</h2>
               <ul id="choices-list">
@@ -124,7 +124,11 @@ document.addEventListener('DOMContentLoaded', function()
               </ul>
               <h2 class="choice-marker">Agree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
             </div>
-            <button class="progress-button" id="next-button">Next Question</button>
+            <h3 class="choice-marker-phone">Disagree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agree</h3>
+            <div class="button-container">
+              <button class="progress-button" id="restart-button">Restart</button>
+              <button class="progress-button" id="next-button">Next Question</button>
+            </div>
         `;
 
         const choiceItems = document.querySelectorAll(".choice-item");
@@ -149,12 +153,12 @@ document.addEventListener('DOMContentLoaded', function()
       } else {
         questionContainer.innerHTML = `
             <div class="title-container">
-              <img class="home-mini" src="./assets/loading.gif"/>
-              <a class="home-title href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Noto+Sans&weight=600&size=32&duration=2000&pause=1000&color=3820A3&center=true&vCenter=true&random=false&width=320&height=40&lines=Calculating+results..." alt="Typing SVG" /></a>
-              <img class="home-mini" src="./assets/loading.gif"/>
+              <img class="home-mini" src="./assets/loading.gif" alt="">
+              <h1 class="home-title" >Calculating results...</h1>
+              <img class="home-mini" src="./assets/loading.gif" alt="">
             </div>
             <h4 class="home-title">"The Simulated Universe never disappointed me. You are what disappoints me..." ~ Herta</h4>
-            <img class="home-background" src="./assets/loading.gif" />
+            <img class="home-background" src="./assets/loading.gif" alt="">
             <button class="progress-button" id="results-button">I'm ready!</button>
         `;
       }
@@ -220,27 +224,32 @@ document.addEventListener('DOMContentLoaded', function()
     function displayResults(match) {
       questionContainer.innerHTML = `
           <div class="title-container">
-            <img class="home-mini" src="./assets/logo.png"/>
+            <img class="home-mini" src="./assets/logo.png" alt="">
             <h1 class="home-title" >You are ${match}!</h1>
-            <img class="home-mini" src="./assets/logo.png"/>
+            <img class="home-mini" src="./assets/logo.png" alt="">
           </div>
-          <img class="home-background" src="./assets/img/characters/${match}.png" />
+          <img class="home-background" src="./assets/img/characters/${match}.png" alt="">
           <div class="button-container">
-            <button class="progress-button" id="share-button">Share!</button>
             <button class="progress-button" id="restart-button">Retake Quiz!</button>
-          <div/>
-          <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h2>Share this quiz!</h2>
-              <div class="share-links">
-                <a href="#" class="share-link" id="share-instagram">Instagram</a>
-                <a href="#" class="share-link" id="share-twitter">Twitter</a>
-                <a href="#" class="share-link" id="share-copy">Copy Link</a>
-              </div>
-            </div>
           </div>
         `;
+    }
+
+    const instagram = document.getElementById("instagram");
+    instagram.addEventListener("click", () => {
+      copyCurrentUrl();
+    });
+
+    const copy = document.getElementById("copy");
+    copy.addEventListener("click", () => {
+      copyCurrentUrl();
+    });
+
+    function copyCurrentUrl() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url)
+      
+      alert('Link copied!');
     }
   }
 );
