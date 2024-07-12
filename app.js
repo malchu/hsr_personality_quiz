@@ -4,12 +4,10 @@ import characters from './characters.js'
 document.addEventListener('DOMContentLoaded', function() 
   {
     const images = [
-      "./assets/mini.gif",
-      "./assets/mini1.gif",
-      "./assets/march7.gif",
+      "./assets/silverwolf.gif",
+      "./assets/stelle.gif",
       "./assets/ratio.gif",
       "./assets/bailu.gif",
-      "./assets/sparkle.gif",
       "./assets/firefly.gif",
     ];
 
@@ -39,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function()
     const questionContainer = document.getElementById("question-container");
     let index = 0;
     let selectedChoice = null;
+    let questionTrait = null;
     let answers = [];
 
     const button = document.getElementById("start-button");
@@ -53,8 +52,9 @@ document.addEventListener('DOMContentLoaded', function()
     questionContainer.addEventListener("click", (event) => { 
       if (event.target && event.target.id === "next-button") {
         if (selectedChoice) {
-          answers.push(Number(selectedChoice.id));
-          console.log(answers);
+          let questionScore = questionTrait.concat([Number(selectedChoice.id)])
+          answers.push(questionScore);
+          console.log(questionScore);
           index++;
           loadQuestion(index);
           selectedChoice = null; // Reset the selected choice
@@ -64,7 +64,9 @@ document.addEventListener('DOMContentLoaded', function()
       }
 
       if (event.target && event.target.id === "results-button") {
-        displayResults();
+        const report = calculateResults();
+        const match = findBestMatch(report);
+        displayResults(match);
       }
 
       if (event.target && event.target.id === "share-button") {
@@ -98,19 +100,19 @@ document.addEventListener('DOMContentLoaded', function()
     });
 
     function loadQuestion(index) {
-      const numberOfQuestions = 10;
+      const numberOfQuestions = 5;
       questionContainer.innerHTML = "";
 
       if (index < numberOfQuestions) {
         const question = questions[index];
         questionContainer.innerHTML = `
             <div class="title-container">
-              <img class="home-mini" src="./assets/mini.gif"/>
+              <img class="home-mini" src="./assets/logo.png"/>
               <h1 class="home-title" >Question ${index + 1} of ${numberOfQuestions}</h1>
-              <img class="home-mini" src="./assets/mini1.gif"/>
+              <img class="home-mini" src="./assets/logo.png"/>
             </div>
             <h4 class="home-title">${question.text}</h4>
-            <img class="home-background" src="./assets/march7.gif" />
+            <img class="home-background" src="./assets/march7.gif"" />
             <div id="choices-container">
               <h2 class="choice-marker">Disagree</h2>
               <ul id="choices-list">
@@ -120,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function()
                 <li class="choice-item" id="1">i</li>
                 <li class="choice-item" id="2">i</li>
               </ul>
-              <h2 class="choice-marker">Agree</h2>
+              <h2 class="choice-marker">Agree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
             </div>
             <button class="progress-button" id="next-button">Next Question</button>
         `;
@@ -134,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function()
           }
           item.classList.add("selected");
           selectedChoice = item;
+          questionTrait = [question.trait, question.reverse];
           nextButton.disabled = false; // Enable the next button when a choice is selected
         }
   
@@ -147,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function()
         questionContainer.innerHTML = `
             <div class="title-container">
               <img class="home-mini" src="./assets/loading.gif"/>
-              <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Noto+Sans&weight=600&size=32&duration=2000&pause=1000&color=3820A3&center=true&vCenter=true&random=false&width=320&height=40&lines=Calculating+results..." alt="Typing SVG" /></a>
+              <a class="home-title href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Noto+Sans&weight=600&size=32&duration=2000&pause=1000&color=3820A3&center=true&vCenter=true&random=false&width=320&height=40&lines=Calculating+results..." alt="Typing SVG" /></a>
               <img class="home-mini" src="./assets/loading.gif"/>
             </div>
             <h4 class="home-title">"The Simulated Universe never disappointed me. You are what disappoints me..." ~ Herta</h4>
@@ -157,14 +160,71 @@ document.addEventListener('DOMContentLoaded', function()
       }
     }
 
-    function displayResults() {
+    let myReport = [
+      { name: 'energy', score: 0 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 0 },
+    ];
+
+    function calculateResults() {
+      answers.forEach((questionScore) => {
+        let myScore = questionScore[2] * (Boolean(questionScore[1]) ? -1 : 1);
+        let reportItem = myReport.find(item => item.name === questionScore[0]);
+
+        if (reportItem) {
+          reportItem.score += myScore;
+        }
+      });
+      
+      myReport.forEach(item => {
+        item.score /= 5;
+      });
+      console.log(myReport);
+      return myReport;
+    }
+
+    function findBestMatch(report) {
+      let compatibilityScore = 0;
+      let bestMatch = "Guoba";
+      let bestScore = Infinity;
+      let tiebreakers = [];
+
+      characters.forEach((character) => {
+        compatibilityScore = 0;
+        character.traits.forEach((trait) => {
+          let reportTrait = myReport.find(item => item.name === trait.name);
+          compatibilityScore += Math.abs(trait.score - reportTrait.score);
+        });
+
+        if (compatibilityScore < bestScore) {
+          bestScore = compatibilityScore;
+          bestMatch = character.name;
+          tiebreakers = [];
+          tiebreakers.push(bestMatch);
+        } else if (compatibilityScore === bestScore) {
+          tiebreakers.push(character.name);
+        }
+      });
+
+      console.log(tiebreakers);
+
+      // Diversify any tiebreakers
+      bestMatch = tiebreakers[Math.floor(Math.random() * tiebreakers.length)];
+
+      console.log(bestScore)
+      return bestMatch; 
+    }
+
+    function displayResults(match) {
       questionContainer.innerHTML = `
           <div class="title-container">
-            <img class="home-mini" src="./assets/march7.gif"/>
-            <h1 class="home-title" >You are March 7th!</h1>
-            <img class="home-mini" src="./assets/march7.gif"/>
+            <img class="home-mini" src="./assets/logo.png"/>
+            <h1 class="home-title" >You are ${match}!</h1>
+            <img class="home-mini" src="./assets/logo.png"/>
           </div>
-          <img class="home-background" src="./assets/march7.gif" />
+          <img class="home-background" src="./assets/img/characters/${match}.png" />
           <span>
             <button class="progress-button" id="share-button">Share!</button>
             <button class="progress-button" id="restart-button">Retake Quiz!</button>
