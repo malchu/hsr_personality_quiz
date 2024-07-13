@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function()
         questionContainer.innerHTML = `
             <div class="title-container">
               <img class="home-mini" src="./assets/loading.gif" alt="">
-              <h1 class="home-title" >Calculating results...</h1>
+              <h1 class="home-title" >Calculating...</h1>
               <img class="home-mini" src="./assets/loading.gif" alt="">
             </div>
             <h4 class="home-title">"The Simulated Universe never disappointed me. You are what disappoints me..." ~ Herta</h4>

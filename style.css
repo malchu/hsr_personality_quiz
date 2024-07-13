@@ -339,10 +339,11 @@ footer {
 
   #choices-container {
     font-size: 12px;
+    margin: 20px 10px 0px 10px;
   }
 
   .choice-item {
-    padding: 7.5px 17.5px;
+    padding: 5px 15px;
     margin: 10px;
   }
 
