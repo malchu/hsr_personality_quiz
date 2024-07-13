@@ -300,9 +300,21 @@ button {
   background-color: rgb(63, 165, 165);
 }
 
+footer {
+  padding-top: 15px;
+}
+
 .author {
   text-decoration: none;
   color: black;
+  border: 2px solid #000000;
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.author:hover {
+  color: white;
+  background-color: black;
 }
 
 @media screen and (max-width: 750px) { 
@@ -341,7 +353,7 @@ button {
   .choice-marker-phone {
     display: block;
     justify-content: center;
-    padding: 0px 10px;
+    padding: 0px 10px 15px 10px;
   }
 
   .share-buttons {
