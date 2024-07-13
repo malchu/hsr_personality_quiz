@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function()
     });
 
     function copyCurrentUrl() {
-      const url = "Find out which Honkai Star Rail character you are: " + window.location.href;
+      const url = window.location.href;
       navigator.clipboard.writeText(url)
       
       alert('Link copied!');
