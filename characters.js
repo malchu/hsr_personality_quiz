@@ -32,7 +32,7 @@ const characters = [
       { name: 'mind', score: 0 },
       { name: 'nature', score: -1 },
       { name: 'tactics', score: 0 },
-      { name: 'identity', score: 1 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -44,7 +44,7 @@ const characters = [
       { name: 'mind', score: -1 },
       { name: 'nature', score: -2 },
       { name: 'tactics', score: -2 },
-      { name: 'identity', score: 0 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -56,7 +56,7 @@ const characters = [
       { name: 'mind', score: -2 },
       { name: 'nature', score: -1 },
       { name: 'tactics', score: -2 },
-      { name: 'identity', score: 1 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -65,10 +65,10 @@ const characters = [
     type: 'Lightning',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -77,10 +77,10 @@ const characters = [
     type: 'Wind',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
+      { name: 'mind', score: -1 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -89,10 +89,10 @@ const characters = [
     type: 'Wind',
     traits: [
       { name: 'energy', score: 2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 2 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -101,10 +101,10 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
+      { name: 'mind', score: 0 },
       { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -114,9 +114,9 @@ const characters = [
     traits: [
       { name: 'energy', score: 1 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -125,10 +125,10 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -137,10 +137,10 @@ const characters = [
     type: 'Wind',
     traits: [
       { name: 'energy', score: 2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 2 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -149,10 +149,10 @@ const characters = [
     type: 'Imaginary',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 2 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -161,10 +161,10 @@ const characters = [
     type: 'Fire',
     traits: [
       { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -174,9 +174,9 @@ const characters = [
     traits: [
       { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -185,8 +185,8 @@ const characters = [
     type: 'Fire',
     traits: [
       { name: 'energy', score: 0 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
+      { name: 'mind', score: 2 },
+      { name: 'nature', score: -1 },
       { name: 'tactics', score: 1 },
       { name: 'identity', score: 1 },
     ],
@@ -197,7 +197,7 @@ const characters = [
     type: 'Ice',
     traits: [
       { name: 'energy', score: 0 },
-      { name: 'mind', score: 1 },
+      { name: 'mind', score: 2 },
       { name: 'nature', score: 1 },
       { name: 'tactics', score: 1 },
       { name: 'identity', score: 1 },
@@ -209,10 +209,10 @@ const characters = [
     type: 'Fire',
     traits: [
       { name: 'energy', score: -2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -221,10 +221,10 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: 2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -233,10 +233,10 @@ const characters = [
     type: 'Ice',
     traits: [
       { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -247,7 +247,7 @@ const characters = [
       { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
+      { name: 'tactics', score: 2 },
       { name: 'identity', score: 1 },
     ],
   },
@@ -257,10 +257,10 @@ const characters = [
     type: 'Fire',
     traits: [
       { name: 'energy', score: -2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -269,10 +269,10 @@ const characters = [
     type: 'Wind',
     traits: [
       { name: 'energy', score: 2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -282,9 +282,9 @@ const characters = [
     traits: [
       { name: 'energy', score: -1 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -293,9 +293,9 @@ const characters = [
     type: 'Lightning',
     traits: [
       { name: 'energy', score: 0 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
+      { name: 'mind', score: 2 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
       { name: 'identity', score: 1 },
     ],
   },
@@ -306,9 +306,9 @@ const characters = [
     traits: [
       { name: 'energy', score: 1 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
+      { name: 'nature', score: 2 },
       { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -318,9 +318,9 @@ const characters = [
     traits: [
       { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -329,10 +329,10 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -342,9 +342,9 @@ const characters = [
     traits: [
       { name: 'energy', score: 1 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -353,10 +353,10 @@ const characters = [
     type: 'Quantum',
     traits: [
       { name: 'energy', score: 0 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -365,10 +365,10 @@ const characters = [
     type: 'Ice',
     traits: [
       { name: 'energy', score: 2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -377,10 +377,10 @@ const characters = [
     type: 'Ice',
     traits: [
       { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -389,9 +389,9 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: 0 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: 0 },
       { name: 'identity', score: 1 },
     ],
   },
@@ -403,8 +403,8 @@ const characters = [
       { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -413,10 +413,10 @@ const characters = [
     type: 'Quantum',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -425,10 +425,10 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: -2 },
       { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
@@ -437,10 +437,10 @@ const characters = [
     type: 'Ice',
     traits: [
       { name: 'energy', score: 1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -449,10 +449,10 @@ const characters = [
     type: 'Wind',
     traits: [
       { name: 'energy', score: -2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -461,10 +461,10 @@ const characters = [
     type: 'Quantum',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -1 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -473,10 +473,10 @@ const characters = [
     type: 'Lightning',
     traits: [
       { name: 'energy', score: -2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -487,8 +487,8 @@ const characters = [
       { name: 'energy', score: 0 },
       { name: 'mind', score: 1 },
       { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -497,10 +497,10 @@ const characters = [
     type: 'Quantum',
     traits: [
       { name: 'energy', score: -2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -509,10 +509,10 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: -2 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: -1 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -521,10 +521,10 @@ const characters = [
     type: 'Lightning',
     traits: [
       { name: 'energy', score: 0 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 0 },
     ],
   },
   {
@@ -534,7 +534,7 @@ const characters = [
     traits: [
       { name: 'energy', score: -2 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
+      { name: 'nature', score: 2 },
       { name: 'tactics', score: 1 },
       { name: 'identity', score: 1 },
     ],
@@ -545,10 +545,10 @@ const characters = [
     type: 'Physical',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: -2 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: -2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -557,10 +557,10 @@ const characters = [
     type: 'Imaginary',
     traits: [
       { name: 'energy', score: 0 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 2 },
+      { name: 'nature', score: 2 },
+      { name: 'tactics', score: 2 },
+      { name: 'identity', score: 2 },
     ],
   },
   {
@@ -570,9 +570,9 @@ const characters = [
     traits: [
       { name: 'energy', score: 2 },
       { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'nature', score: -2 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: -2 },
     ],
   },
   {
@@ -581,10 +581,10 @@ const characters = [
     type: 'Ice',
     traits: [
       { name: 'energy', score: -1 },
-      { name: 'mind', score: 1 },
-      { name: 'nature', score: 1 },
-      { name: 'tactics', score: 1 },
-      { name: 'identity', score: 1 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: -1 },
+      { name: 'identity', score: -1 },
     ],
   },
   {
