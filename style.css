@@ -163,7 +163,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px 0px 40px 0px;
 }
 
 .share-buttons {
@@ -292,29 +292,41 @@ button {
 }
 
 .footer {
+  background-color: rgb(63, 165, 165);
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 20px;
-  background-color: rgb(63, 165, 165);
 }
 
 footer {
-  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px 40px 0px;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .author {
   text-decoration: none;
   color: black;
-  border: 2px solid #000000;
-  border-radius: 25px;
-  padding: 10px 20px;
+  border-bottom: 1px solid #ffffff00;
+  margin: 10px 20px;
+  padding-top: 10px;
 }
 
 .author:hover {
   color: white;
-  background-color: black;
+  border-bottom: 1px solid #ffffff;
+  transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 750px) { 
@@ -370,5 +382,9 @@ footer {
     width: 20px;
     height: 20px;
     margin-right: 8px;
+  }
+
+  .links-container {
+    flex-direction: column;
   }
 }

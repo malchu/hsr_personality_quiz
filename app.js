@@ -4,11 +4,16 @@ import characters from './characters.js'
 document.addEventListener('DOMContentLoaded', function() 
   {
     const images = [
-      "./assets/silverwolf.gif",
-      "./assets/stelle.gif",
-      "./assets/ratio.gif",
-      "./assets/bailu.gif",
-      "./assets/firefly.gif",
+      "./assets/gif/qingque.gif",
+      "./assets/gif/stelle.gif",
+      "./assets/gif/silverwolf.gif",
+      "./assets/gif/march7.gif",
+      "./assets/gif/bailu.gif",
+      "./assets/gif/firefly.gif",
+      "./assets/gif/jingliu.gif",
+      "./assets/gif/kafka.gif",
+      "./assets/gif/jingyuan.gif",
+      "./assets/gif/sparkle.gif",
     ];
 
     let currentImageIndex = 0;
@@ -107,12 +112,12 @@ document.addEventListener('DOMContentLoaded', function()
         const question = questions[index];
         questionContainer.innerHTML = `
             <div class="title-container">
-              <img class="home-mini" src="./assets/logo.png" alt="">
+              <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
               <h1 class="home-title" >Question ${index + 1} of ${numberOfQuestions}</h1>
-              <img class="home-mini" src="./assets/logo.png" alt="">
+              <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
             </div>
             <h4>${question.text}</h4>
-            <img class="home-background" src="./assets/march7.gif" alt="">
+            <img class="home-background" src="./assets/gif/stelle.gif" alt="">
             <div id="choices-container">
               <h2 class="choice-marker">Disagree</h2>
               <ul id="choices-list">
@@ -153,12 +158,12 @@ document.addEventListener('DOMContentLoaded', function()
       } else {
         questionContainer.innerHTML = `
             <div class="title-container">
-              <img class="home-mini" src="./assets/loading.gif" alt="">
+              <img class="home-mini" src="./assets/gif/loading.gif" alt="">
               <h1 class="home-title" >Calculating...</h1>
-              <img class="home-mini" src="./assets/loading.gif" alt="">
+              <img class="home-mini" src="./assets/gif/loading.gif" alt="">
             </div>
             <h4 class="home-title">"The Simulated Universe never disappointed me. You are what disappoints me..." ~ Herta</h4>
-            <img class="home-background" src="./assets/loading.gif" alt="">
+            <img class="home-background" src="./assets/gif/loading.gif" alt="">
             <button class="progress-button" id="results-button">I'm ready!</button>
         `;
       }
@@ -224,9 +229,9 @@ document.addEventListener('DOMContentLoaded', function()
     function displayResults(match) {
       questionContainer.innerHTML = `
           <div class="title-container">
-            <img class="home-mini" src="./assets/logo.png" alt="">
+            <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
             <h1 class="home-title" >You are ${match}!</h1>
-            <img class="home-mini" src="./assets/logo.png" alt="">
+            <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
           </div>
           <img class="home-background" src="./assets/img/characters/${match}.png" alt="">
           <div class="button-container">
