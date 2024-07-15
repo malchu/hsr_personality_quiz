@@ -74,38 +74,13 @@ document.addEventListener('DOMContentLoaded', function()
         displayResults(match);
       }
 
-      if (event.target && event.target.id === "share-button") {
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        modal.style.display = "flex";
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        }
-      }
-
       if (event.target && event.target.id === "restart-button") {
-        homeContainer.style.display = "flex";
-        questionContainer.style.display = "none";
-        index = 0;
-        answers = [];
+        restart();
       }
     });
 
     function loadQuestion(index) {
-      const numberOfQuestions = 5;
+      const numberOfQuestions = 0;
       questionContainer.innerHTML = "";
 
       if (index < numberOfQuestions) {
@@ -170,11 +145,11 @@ document.addEventListener('DOMContentLoaded', function()
     }
 
     let myReport = [
-      { name: 'energy', score: 0 },
-      { name: 'mind', score: 0 },
-      { name: 'nature', score: 0 },
-      { name: 'tactics', score: 0 },
-      { name: 'identity', score: 0 },
+      { name: 'energy', score: 10 },
+      { name: 'mind', score: 10 },
+      { name: 'nature', score: 10 },
+      { name: 'tactics', score: 10 },
+      { name: 'identity', score: 10 },
     ];
 
     function calculateResults() {
@@ -194,6 +169,27 @@ document.addEventListener('DOMContentLoaded', function()
       return myReport;
     }
 
+    let characterScores = [];
+    let pathScores = [
+      {name: "Preservation", score: 0},
+      {name: "Nihility", score: 0},
+      {name: "Destruction", score: 0},
+      {name: "The Hunt", score: 0},
+      {name: "Harmony", score: 0},
+      {name: "Abundance", score: 0},
+      {name: "Erudition", score: 0},
+    ];
+    let typeScores = [
+      {name: "Physical", score: 0},
+      {name: "Ice", score: 0},
+      {name: "Wind", score: 0},
+      {name: "Imaginary", score: 0},
+      {name: "Quantum", score: 0},
+      {name: "Fire", score: 0},
+      {name: "Lightning", score: 0},
+    ];
+    let compatibilityScoreTotal = 0;
+
     function findBestMatch(report) {
       let compatibilityScore = 0;
       let bestMatch = "Guoba";
@@ -207,6 +203,17 @@ document.addEventListener('DOMContentLoaded', function()
           compatibilityScore += Math.abs(trait.score - reportTrait.score);
         });
 
+        console.log(compatibilityScore);
+        compatibilityScoreTotal += compatibilityScore;
+        characterScores.push([character.name, compatibilityScore]);
+
+        // calculate path and type rankings
+        let path = pathScores.find(item => item.name === character.path);
+        path.score += compatibilityScore;
+        let type = typeScores.find(item => item.name === character.type);
+        type.score += compatibilityScore;
+
+        // check if character is the best match
         if (compatibilityScore < bestScore) {
           bestScore = compatibilityScore;
           bestMatch = character.name;
@@ -217,6 +224,15 @@ document.addEventListener('DOMContentLoaded', function()
         }
       });
 
+      // build top 5 tables
+      characterScores.sort((a, b) => a[1] - b[1]);
+      pathScores.sort((a, b) => a.score - b.score);
+      typeScores.sort((a, b) => a.score - b.score);
+
+      console.log([characterScores[0][0], pathScores[0].name, typeScores[0].name]);
+      console.log(pathScores);
+      console.log(typeScores);
+      console.log(compatibilityScoreTotal);
       console.log(tiebreakers);
 
       // Diversify any tiebreakers
@@ -227,7 +243,22 @@ document.addEventListener('DOMContentLoaded', function()
     }
 
     function displayResults(match) {
-      questionContainer.innerHTML = `
+      characterScores.forEach(character => {
+        character.percentage = ((character[1] / 20) * 100).toFixed(1);
+        character.invertedPercentage = (100 - character.percentage).toFixed(1);
+      });
+      
+      pathScores.forEach(path => {
+        path.percentage = ((path.score / compatibilityScoreTotal) * 100).toFixed(1);
+        path.invertedPercentage = (100 - path.percentage).toFixed(1);
+      });
+
+      typeScores.forEach(type => {
+        type.percentage = ((type.score / compatibilityScoreTotal) * 100).toFixed(1);
+        type.invertedPercentage = (100 - type.percentage).toFixed(1);
+      });
+      
+      let tableHTML = `
           <div class="title-container">
             <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
             <h1 class="home-title" >You are ${match}!</h1>
@@ -237,7 +268,148 @@ document.addEventListener('DOMContentLoaded', function()
           <div class="button-container">
             <button class="progress-button" id="restart-button">Play again!</button>
           </div>
+          <div class="stats-container">
+            <table class="stats">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Character</th>
+                  <th>Match</th>
+                </tr>
+              </thead>
+              <tbody>
         `;
+      
+        characterScores.slice(0, 5).forEach((character, index) => {
+          tableHTML += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${character[0]}</td>
+              <td>${character.invertedPercentage}%</td>
+            </tr>
+          `;
+        });
+
+        tableHTML += `
+            </tbody>
+            <tbody id="more-stats">
+        `;
+
+        characterScores.slice(5).forEach((character, index) => {
+          tableHTML += `
+            <tr>
+              <td>${index + 6}</td>
+              <td>${character[0]}</td>
+              <td>${character.invertedPercentage}%</td>
+            </tr>
+          `;
+        });
+
+        tableHTML += `
+            </tbody>
+          </table>
+          <button id="show-more-button">Show more</button>
+          <table class="stats">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Path</th>
+                  <th>Match</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
+
+        pathScores.forEach((path, index) => {
+          tableHTML += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${path.name}</td>
+              <td>${path.invertedPercentage}%</td>
+            </tr>
+          `;
+        });
+
+        tableHTML += `
+            </tbody>
+          </table>
+          <table class="stats">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Type</th>
+                  <th>Match</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
+
+        typeScores.forEach((type, index) => {
+          tableHTML += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${type.name}</td>
+              <td>${type.invertedPercentage}%</td>
+            </tr>
+          `;
+        });
+        
+        tableHTML += `
+              </tbody>
+            </table>
+          </div>
+        `;
+
+        questionContainer.innerHTML = tableHTML;
+
+        const restContainer = document.getElementById('more-stats');
+        const showMoreButton = document.getElementById('show-more-button');
+
+        restContainer.style.display = "none";
+
+        showMoreButton.addEventListener('click', () => {
+          if (restContainer.style.display === 'none') {
+            restContainer.style.display = 'contents';
+            showMoreButton.textContent = 'Show Less';
+          } else {
+            restContainer.style.display = 'none';
+            showMoreButton.textContent = 'Show More';
+          }
+        });
+    }
+
+    function restart() {
+      homeContainer.style.display = "flex";
+      questionContainer.style.display = "none";
+      index = 0;
+      answers = [];
+      myReport = [
+        { name: 'energy', score: 0 },
+        { name: 'mind', score: 0 },
+        { name: 'nature', score: 0 },
+        { name: 'tactics', score: 0 },
+        { name: 'identity', score: 0 },
+      ];
+      pathScores = [
+        {name: "Preservation", score: 0},
+        {name: "Nihility", score: 0},
+        {name: "Destruction", score: 0},
+        {name: "The Hunt", score: 0},
+        {name: "Harmony", score: 0},
+        {name: "Abundance", score: 0},
+        {name: "Erudition", score: 0},
+      ];
+      typeScores = [
+        {name: "Physical", score: 0},
+        {name: "Ice", score: 0},
+        {name: "Wind", score: 0},
+        {name: "Imaginary", score: 0},
+        {name: "Quantum", score: 0},
+        {name: "Fire", score: 0},
+        {name: "Lightning", score: 0},
+      ];
+      characterScores = [];
+      compatibilityScoreTotal = 0;
     }
 
     const instagram = document.getElementById("instagram");

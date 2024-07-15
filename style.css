@@ -151,6 +151,83 @@ button {
   justify-content: center;
 }
 
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0px 0px 0px;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.stats th:nth-child(1),
+.stats td:nth-child(1) {
+  width: 10%;
+}
+
+.stats th:nth-child(2),
+.stats td:nth-child(2) {
+  width: 45%;
+}
+
+.stats th:nth-child(3),
+.stats td:nth-child(3) {
+  width: 45%;
+}
+
+.stats thead tr {
+  background-color: #41416A;
+  color: #ffffff;
+  text-align: center;
+}
+
+.stats th, .stats td {
+  padding: 12px 15px;
+}
+
+.stats tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.stats tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.stats tbody tr:last-of-type {
+  border-bottom: 2px solid #41416A;
+}
+
+.stats tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.stats tbody tr.active-row {
+  font-weight: bold;
+  color: #41416A;
+}
+
+#show-more-button {
+  text-decoration: none;
+  color: #41416A;
+  border: 1px solid transparent;
+}
+
+#show-more-button:hover {
+  color: #41416A;
+  border-bottom: 1px solid #41416A;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
 .share-button-container {
   display: flex;
   justify-content: center;
