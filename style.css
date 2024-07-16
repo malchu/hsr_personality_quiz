@@ -10,10 +10,12 @@ body {
 }
 
 h1 {
+  text-align: center;
   color: #41416A;
 }
 
 h4 {
+  text-align: center;
   font-size: 16px;
 }
 
@@ -38,6 +40,12 @@ button {
   max-height: 100%; 
   width: auto; /* Maintain aspect ratio */
   max-width: 20%;
+  padding: 20px 0px 20px 0px;
+}
+
+.question-background {
+  height: 50vh; /* Maintain aspect ratio */
+  width: 40vw; /* Maintain aspect ratio */
   padding: 20px 0px 20px 0px;
 }
 
@@ -422,6 +430,11 @@ footer {
   transition: all 0.3s ease;
 }
 
+p {
+  text-align: center;
+  padding: 0px 10px 30px 10px;
+}
+
 @media screen and (max-width: 750px) { 
   h1 {
     font-size: 22px;
@@ -440,6 +453,11 @@ footer {
     max-height: 100%; 
     width: auto; /* Maintain aspect ratio */
     max-width: 60%;
+  }
+
+  .question-background {
+    height: 27vh; /* Maintain aspect ratio */
+    width: 80vw; /* Maintain aspect ratio */
   }
 
   #choices-container {

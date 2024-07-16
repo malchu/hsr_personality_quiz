@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function()
               <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
             </div>
             <h4>${question.text}</h4>
-            <img class="home-background" src="./assets/gif/stelle.gif" alt="">
+            <img class="question-background" src="./assets/gif/questions/${question.id}.gif" alt="">
             <div id="choices-container">
               <h2 class="choice-marker">Disagree</h2>
               <ul id="choices-list">
@@ -182,22 +182,22 @@ document.addEventListener('DOMContentLoaded', function()
 
     let characterScores = [];
     let pathScores = [
-      {name: "Preservation", score: 0},
-      {name: "Nihility", score: 0},
-      {name: "Destruction", score: 0},
-      {name: "The Hunt", score: 0},
-      {name: "Harmony", score: 0},
-      {name: "Abundance", score: 0},
-      {name: "Erudition", score: 0},
+      {name: "Preservation", score: 0, count: 0},
+      {name: "Nihility", score: 0, count: 0},
+      {name: "Destruction", score: 0, count: 0},
+      {name: "The Hunt", score: 0, count: 0},
+      {name: "Harmony", score: 0, count: 0},
+      {name: "Abundance", score: 0, count: 0},
+      {name: "Erudition", score: 0, count: 0},
     ];
     let typeScores = [
-      {name: "Physical", score: 0},
-      {name: "Ice", score: 0},
-      {name: "Wind", score: 0},
-      {name: "Imaginary", score: 0},
-      {name: "Quantum", score: 0},
-      {name: "Fire", score: 0},
-      {name: "Lightning", score: 0},
+      {name: "Physical", score: 0, count: 0},
+      {name: "Ice", score: 0, count: 0},
+      {name: "Wind", score: 0, count: 0},
+      {name: "Imaginary", score: 0, count: 0},
+      {name: "Quantum", score: 0, count: 0},
+      {name: "Fire", score: 0, count: 0},
+      {name: "Lightning", score: 0, count: 0},
     ];
     let compatibilityScoreTotal = 0;
 
@@ -219,9 +219,12 @@ document.addEventListener('DOMContentLoaded', function()
 
         // calculate path and type rankings
         let path = pathScores.find(item => item.name === character.path);
-        path.score += compatibilityScore;
         let type = typeScores.find(item => item.name === character.type);
+        path.score += compatibilityScore;
         type.score += compatibilityScore;
+        path.count += 1;
+        type.count += 1;
+
 
         // check if character is the best match
         if (compatibilityScore < bestScore) {
@@ -234,10 +237,16 @@ document.addEventListener('DOMContentLoaded', function()
         }
       });
 
-      // build top 5 tables
+      // normalize scores
+      pathScores.forEach(item => {
+        item.score /= item.count;
+      });
+      typeScores.forEach(item => {
+        item.score /= item.count;
+      });
+
       pathScores.sort((a, b) => a.score - b.score);
       typeScores.sort((a, b) => a.score - b.score);
-
       characterScores.sort((a, b) => {
         // Primary sort by score
         if (a[1] < b[1]) return -1;
@@ -279,12 +288,12 @@ document.addEventListener('DOMContentLoaded', function()
       });
       
       pathScores.forEach(path => {
-        path.percentage = ((path.score / compatibilityScoreTotal) * 100).toFixed(1);
+        path.percentage = ((path.score / 20) * 100).toFixed(1);
         path.invertedPercentage = (100 - path.percentage).toFixed(1);
       });
 
       typeScores.forEach(type => {
-        type.percentage = ((type.score / compatibilityScoreTotal) * 100).toFixed(1);
+        type.percentage = ((type.score / 20) * 100).toFixed(1);
         type.invertedPercentage = (100 - type.percentage).toFixed(1);
       });
       
@@ -423,22 +432,22 @@ document.addEventListener('DOMContentLoaded', function()
         { name: 'identity', score: 0 },
       ];
       pathScores = [
-        {name: "Preservation", score: 0},
-        {name: "Nihility", score: 0},
-        {name: "Destruction", score: 0},
-        {name: "The Hunt", score: 0},
-        {name: "Harmony", score: 0},
-        {name: "Abundance", score: 0},
-        {name: "Erudition", score: 0},
+        {name: "Preservation", score: 0, count: 0},
+        {name: "Nihility", score: 0, count: 0},
+        {name: "Destruction", score: 0, count: 0},
+        {name: "The Hunt", score: 0, count: 0},
+        {name: "Harmony", score: 0, count: 0},
+        {name: "Abundance", score: 0, count: 0},
+        {name: "Erudition", score: 0, count: 0},
       ];
       typeScores = [
-        {name: "Physical", score: 0},
-        {name: "Ice", score: 0},
-        {name: "Wind", score: 0},
-        {name: "Imaginary", score: 0},
-        {name: "Quantum", score: 0},
-        {name: "Fire", score: 0},
-        {name: "Lightning", score: 0},
+        {name: "Physical", score: 0, count: 0},
+        {name: "Ice", score: 0, count: 0},
+        {name: "Wind", score: 0, count: 0},
+        {name: "Imaginary", score: 0, count: 0},
+        {name: "Quantum", score: 0, count: 0},
+        {name: "Fire", score: 0, count: 0},
+        {name: "Lightning", score: 0, count: 0},
       ];
       characterScores = [];
       compatibilityScoreTotal = 0;

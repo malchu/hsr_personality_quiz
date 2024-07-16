@@ -5,5 +5,6 @@
 - [x] Finish auxiliary features
 - [x] Personalize questions
 - [x] Add character descriptions
-- [ ] Normalize scores
+- [x] Normalize scores
+- [x] Images for each question
 - [ ] Add an expand feature for each character row in the stats table
