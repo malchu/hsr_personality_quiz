@@ -1,10 +1,11 @@
 import questions from './questions.js';
 import characters from './characters.js';
-import { shuffle, copyCurrentUrl, startSlideshow } from './utils.js';
+import { shuffle, copyCurrentUrl, startSlideshow, selectChoice } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', function() 
   {
     // variables
+    const numberOfQuestions = questions.length;
     const images = [
       "./assets/gif/qingque.gif",
       "./assets/gif/stelle.gif",
@@ -100,10 +101,9 @@ document.addEventListener('DOMContentLoaded', function()
 
     // logic functions
     function loadQuestion(index) {
-      const numberOfQuestions = 25;
-      questionContainer.innerHTML = "";
-
       if (index < numberOfQuestions) {  // there are still questions
+        
+        // display question
         const question = questions[index];
         questionContainer.innerHTML = `
             <div class="title-container">
@@ -131,18 +131,19 @@ document.addEventListener('DOMContentLoaded', function()
             </div>
         `;
 
-        // Choice selection logic
+        // choice selection logic
         const choiceItems = document.querySelectorAll(".choice-item");
         const nextButton = document.getElementById("next-button");
-
         choiceItems.forEach(item => {
           item.addEventListener("click", function() {
-            selectChoice(item, question);
+            selectedChoice = selectChoice(item, selectedChoice);
+            questionTrait = [question.trait, question.reverse];
             nextButton.disabled = false; // Enable the next button when a choice is selected
           });
         });
-
-      } else {  // no more questions, show calculating screen
+      } else {  // no more questions
+        
+        // display calculating screen
         questionContainer.innerHTML = `
             <div class="title-container">
               <img class="home-mini" src="./assets/gif/loading.gif" alt="">
@@ -422,15 +423,6 @@ document.addEventListener('DOMContentLoaded', function()
         {name: "Lightning", score: 0, count: 0},
       ];
       characterScores = [];
-    }
-
-    function selectChoice(item, question) {
-      if (selectedChoice) {
-        selectedChoice.classList.remove("selected");
-      }
-      item.classList.add("selected");
-      selectedChoice = item;
-      questionTrait = [question.trait, question.reverse];
     }
   }
 );

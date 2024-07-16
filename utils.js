@@ -25,3 +25,12 @@ export function startSlideshow(images) {
   }
   showNextSlide();
 }
+
+export function selectChoice(item, selectedChoice) {
+  if (selectedChoice) {
+    selectedChoice.classList.remove("selected");
+  }
+  item.classList.add("selected");
+  selectedChoice = item;
+  return selectedChoice;
+}
