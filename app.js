@@ -283,6 +283,7 @@ document.addEventListener('DOMContentLoaded', function()
             <h1 class="home-title" >You are ${match}!</h1>
             <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
           </div>
+          <h4 class="home-title">"${characters.find(item => item.name === match).info}" ~ ${match}</h4>
           <img class="home-background" src="./assets/img/characters/${match}.png" alt="">
           <div class="button-container">
             <button class="progress-button" id="restart-button">Play again!</button>
