@@ -79,8 +79,19 @@ document.addEventListener('DOMContentLoaded', function()
       }
     });
 
+    // Shuffle function to randomize the questions array
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Shuffle the questions array when the quiz starts
+    shuffle(questions);
+
     function loadQuestion(index) {
-      const numberOfQuestions = 0;
+      const numberOfQuestions = 25;
       questionContainer.innerHTML = "";
 
       if (index < numberOfQuestions) {
@@ -402,6 +413,7 @@ document.addEventListener('DOMContentLoaded', function()
       homeContainer.style.display = "flex";
       questionContainer.style.display = "none";
       index = 0;
+      shuffle(questions);
       answers = [];
       myReport = [
         { name: 'energy', score: 0 },

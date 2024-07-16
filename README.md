@@ -3,6 +3,7 @@
 - [x] Finish personality logic
 - [x] Finish main UI
 - [x] Finish auxiliary features
-- [ ] Personalize questions
-- [ ] Add character descriptions
+- [x] Personalize questions
+- [x] Add character descriptions
+- [ ] Normalize scores
 - [ ] Add an expand feature for each character row in the stats table
