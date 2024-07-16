@@ -145,11 +145,11 @@ document.addEventListener('DOMContentLoaded', function()
     }
 
     let myReport = [
-      { name: 'energy', score: 10 },
-      { name: 'mind', score: 10 },
-      { name: 'nature', score: 10 },
-      { name: 'tactics', score: 10 },
-      { name: 'identity', score: 10 },
+      { name: 'energy', score: 0 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 0 },
     ];
 
     function calculateResults() {
@@ -203,9 +203,8 @@ document.addEventListener('DOMContentLoaded', function()
           compatibilityScore += Math.abs(trait.score - reportTrait.score);
         });
 
-        console.log(compatibilityScore);
         compatibilityScoreTotal += compatibilityScore;
-        characterScores.push([character.name, compatibilityScore]);
+        characterScores.push([character.name, compatibilityScore, character.path, character.type]);
 
         // calculate path and type rankings
         let path = pathScores.find(item => item.name === character.path);
@@ -225,9 +224,29 @@ document.addEventListener('DOMContentLoaded', function()
       });
 
       // build top 5 tables
-      characterScores.sort((a, b) => a[1] - b[1]);
       pathScores.sort((a, b) => a.score - b.score);
       typeScores.sort((a, b) => a.score - b.score);
+
+      characterScores.sort((a, b) => {
+        // Primary sort by score
+        if (a[1] < b[1]) return -1;
+        if (a[1] > b[1]) return 1;
+
+        // Secondary sort by path
+        if (pathScores.findIndex(item => item.name === a[2]) < pathScores.findIndex(item => item.name === b[2])) return -1;
+        if (pathScores.findIndex(item => item.name === a[2]) > pathScores.findIndex(item => item.name === b[2])) return 1;
+
+        // Tertiary sort by type
+        if (typeScores.findIndex(item => item.name === a[3]) < typeScores.findIndex(item => item.name === b[3])) return -1;
+        if (typeScores.findIndex(item => item.name === a[3]) > typeScores.findIndex(item => item.name === b[3])) return 1;
+
+        // Quaternary sort by character name (alphabetical order)
+        if (a[0] < b[0]) return -1;
+        if (a[0] > b[0]) return 1;
+
+        // They are equal
+        return 0;
+      });
 
       console.log([characterScores[0][0], pathScores[0].name, typeScores[0].name]);
       console.log(pathScores);
@@ -236,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function()
       console.log(tiebreakers);
 
       // Diversify any tiebreakers
-      bestMatch = tiebreakers[Math.floor(Math.random() * tiebreakers.length)];
+      bestMatch = characterScores[0][0];
 
       console.log(bestScore)
       return bestMatch; 
@@ -269,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function()
             <button class="progress-button" id="restart-button">Play again!</button>
           </div>
           <div class="stats-container">
-            <table class="stats">
+            <table class="stats" id="stats">
               <thead>
                 <tr>
                   <th>Rank</th>

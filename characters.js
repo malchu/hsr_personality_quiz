@@ -520,11 +520,11 @@ const characters = [
     path: 'Harmony',
     type: 'Lightning',
     traits: [
-      { name: 'energy', score: 0 },
+      { name: 'energy', score: -1 },
       { name: 'mind', score: 0 },
       { name: 'nature', score: 0 },
       { name: 'tactics', score: 0 },
-      { name: 'identity', score: 0 },
+      { name: 'identity', score: -2 },
     ],
   },
   {

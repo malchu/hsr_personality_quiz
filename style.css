@@ -183,6 +183,10 @@ button {
   width: 45%;
 }
 
+.stat-pic {
+  height: 30px;
+}
+
 .stats thead tr {
   background-color: #41416A;
   color: #ffffff;
@@ -197,8 +201,9 @@ button {
   border-bottom: 1px solid #dddddd;
 }
 
-.stats tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+.stats tbody tr:first-of-type {
+  font-size: larger;
+  font-weight: 900;
 }
 
 .stats tbody tr:last-of-type {
@@ -215,8 +220,19 @@ button {
   color: #41416A;
 }
 
+#more-stats tr:first-of-type {
+  font-size: large;
+  font-weight: 500;
+}
+
+#more-stats tr:last-of-type {
+  border-bottom: 2px solid #41416A;
+}
+
 #show-more-button {
   text-decoration: none;
+  font-size: large;
+  background-color: transparent;
   color: #41416A;
   border: 1px solid transparent;
 }
