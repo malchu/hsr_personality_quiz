@@ -1,8 +1,10 @@
 import questions from './questions.js';
-import characters from './characters.js'
+import characters from './characters.js';
+import { shuffle, copyCurrentUrl, startSlideshow } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', function() 
   {
+    // variables
     const images = [
       "./assets/gif/qingque.gif",
       "./assets/gif/stelle.gif",
@@ -15,45 +17,52 @@ document.addEventListener('DOMContentLoaded', function()
       "./assets/gif/jingyuan.gif",
       "./assets/gif/sparkle.gif",
     ];
-
-    let currentImageIndex = 0;
-    const slideshowImage = document.getElementById('background');
-
-    function showNextSlide() {
-      // Increment currentImageIndex and wrap around
-      currentImageIndex++;
-      if (currentImageIndex >= images.length) {
-        currentImageIndex = 0;
-      }
-
-      // Update the src attribute of the image element
-      slideshowImage.src = images[currentImageIndex];
-
-      // Change slide every 3 seconds (3000 milliseconds)
-      setTimeout(showNextSlide, 3000);
-    }
-
-    // Call showNextSlide to start the slideshow
-    showNextSlide();
-    
-
-
     const homeContainer = document.getElementById("home-container");
     const questionContainer = document.getElementById("question-container");
     let index = 0;
     let selectedChoice = null;
     let questionTrait = null;
     let answers = [];
+    let myReport = [
+      { name: 'energy', score: 0 },
+      { name: 'mind', score: 0 },
+      { name: 'nature', score: 0 },
+      { name: 'tactics', score: 0 },
+      { name: 'identity', score: 0 },
+    ];
+    let characterScores = [];
+    let pathScores = [
+      {name: "Preservation", score: 0, count: 0},
+      {name: "Nihility", score: 0, count: 0},
+      {name: "Destruction", score: 0, count: 0},
+      {name: "The Hunt", score: 0, count: 0},
+      {name: "Harmony", score: 0, count: 0},
+      {name: "Abundance", score: 0, count: 0},
+      {name: "Erudition", score: 0, count: 0},
+    ];
+    let typeScores = [
+      {name: "Physical", score: 0, count: 0},
+      {name: "Ice", score: 0, count: 0},
+      {name: "Wind", score: 0, count: 0},
+      {name: "Imaginary", score: 0, count: 0},
+      {name: "Quantum", score: 0, count: 0},
+      {name: "Fire", score: 0, count: 0},
+      {name: "Lightning", score: 0, count: 0},
+    ];
 
-    const button = document.getElementById("start-button");
-    button.addEventListener("click", function() 
+    // start home page slideshow
+    startSlideshow(images);
+
+    // button event listeners
+    const startButton = document.getElementById("start-button");
+    startButton.addEventListener("click", function() 
       {
         homeContainer.style.display = "none";
         questionContainer.style.display = "flex";
+        shuffle(questions);
         loadQuestion(index);
       }
     );
-    
     questionContainer.addEventListener("click", (event) => { 
       if (event.target && event.target.id === "next-button") {
         if (selectedChoice) {
@@ -67,34 +76,34 @@ document.addEventListener('DOMContentLoaded', function()
           alert("Please select a choice before proceeding.");
         }
       }
-
       if (event.target && event.target.id === "results-button") {
-        const report = calculateResults();
-        const match = findBestMatch(report);
+        calculateResults();
+        const match = findBestMatch();
         displayResults(match);
       }
-
       if (event.target && event.target.id === "restart-button") {
         restart();
       }
     });
+    const instagram = document.getElementById("instagram");
+    instagram.addEventListener("click", () => {
+      copyCurrentUrl();
+    });
+    const threads = document.getElementById("threads");
+    threads.addEventListener("click", () => {
+      copyCurrentUrl();
+    });
+    const copy = document.getElementById("copy");
+    copy.addEventListener("click", () => {
+      copyCurrentUrl();
+    });
 
-    // Shuffle function to randomize the questions array
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-
-    // Shuffle the questions array when the quiz starts
-    shuffle(questions);
-
+    // logic functions
     function loadQuestion(index) {
       const numberOfQuestions = 25;
       questionContainer.innerHTML = "";
 
-      if (index < numberOfQuestions) {
+      if (index < numberOfQuestions) {  // there are still questions
         const question = questions[index];
         questionContainer.innerHTML = `
             <div class="title-container">
@@ -122,26 +131,18 @@ document.addEventListener('DOMContentLoaded', function()
             </div>
         `;
 
+        // Choice selection logic
         const choiceItems = document.querySelectorAll(".choice-item");
         const nextButton = document.getElementById("next-button");
 
-        function selectChoice(item) {
-          if (selectedChoice) {
-            selectedChoice.classList.remove("selected");
-          }
-          item.classList.add("selected");
-          selectedChoice = item;
-          questionTrait = [question.trait, question.reverse];
-          nextButton.disabled = false; // Enable the next button when a choice is selected
-        }
-  
         choiceItems.forEach(item => {
           item.addEventListener("click", function() {
-            selectChoice(item);
+            selectChoice(item, question);
+            nextButton.disabled = false; // Enable the next button when a choice is selected
           });
         });
 
-      } else {
+      } else {  // no more questions, show calculating screen
         questionContainer.innerHTML = `
             <div class="title-container">
               <img class="home-mini" src="./assets/gif/loading.gif" alt="">
@@ -154,14 +155,6 @@ document.addEventListener('DOMContentLoaded', function()
         `;
       }
     }
-
-    let myReport = [
-      { name: 'energy', score: 0 },
-      { name: 'mind', score: 0 },
-      { name: 'nature', score: 0 },
-      { name: 'tactics', score: 0 },
-      { name: 'identity', score: 0 },
-    ];
 
     function calculateResults() {
       answers.forEach((questionScore) => {
@@ -177,44 +170,22 @@ document.addEventListener('DOMContentLoaded', function()
         item.score /= 5;
       });
       console.log(myReport);
-      return myReport;
     }
 
-    let characterScores = [];
-    let pathScores = [
-      {name: "Preservation", score: 0, count: 0},
-      {name: "Nihility", score: 0, count: 0},
-      {name: "Destruction", score: 0, count: 0},
-      {name: "The Hunt", score: 0, count: 0},
-      {name: "Harmony", score: 0, count: 0},
-      {name: "Abundance", score: 0, count: 0},
-      {name: "Erudition", score: 0, count: 0},
-    ];
-    let typeScores = [
-      {name: "Physical", score: 0, count: 0},
-      {name: "Ice", score: 0, count: 0},
-      {name: "Wind", score: 0, count: 0},
-      {name: "Imaginary", score: 0, count: 0},
-      {name: "Quantum", score: 0, count: 0},
-      {name: "Fire", score: 0, count: 0},
-      {name: "Lightning", score: 0, count: 0},
-    ];
-    let compatibilityScoreTotal = 0;
-
-    function findBestMatch(report) {
+    function findBestMatch() {
       let compatibilityScore = 0;
       let bestMatch = "Guoba";
       let bestScore = Infinity;
       let tiebreakers = [];
 
       characters.forEach((character) => {
+        
+        // calculate compatibility scores for each character
         compatibilityScore = 0;
         character.traits.forEach((trait) => {
           let reportTrait = myReport.find(item => item.name === trait.name);
           compatibilityScore += Math.abs(trait.score - reportTrait.score);
         });
-
-        compatibilityScoreTotal += compatibilityScore;
         characterScores.push([character.name, compatibilityScore, character.path, character.type]);
 
         // calculate path and type rankings
@@ -245,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function()
         item.score /= item.count;
       });
 
+      // sort arrays to get ranking
       pathScores.sort((a, b) => a.score - b.score);
       typeScores.sort((a, b) => a.score - b.score);
       characterScores.sort((a, b) => {
@@ -268,20 +240,20 @@ document.addEventListener('DOMContentLoaded', function()
         return 0;
       });
 
+      // print logic
       console.log([characterScores[0][0], pathScores[0].name, typeScores[0].name]);
       console.log(pathScores);
       console.log(typeScores);
-      console.log(compatibilityScoreTotal);
       console.log(tiebreakers);
-
-      // Diversify any tiebreakers
-      bestMatch = characterScores[0][0];
-
       console.log(bestScore)
+
+      bestMatch = characterScores[0][0];
       return bestMatch; 
     }
 
     function displayResults(match) {
+      
+      // calculate match percentages
       characterScores.forEach(character => {
         character.percentage = ((character[1] / 20) * 100).toFixed(1);
         character.invertedPercentage = (100 - character.percentage).toFixed(1);
@@ -297,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function()
         type.invertedPercentage = (100 - type.percentage).toFixed(1);
       });
       
+      // show stat tables
       let tableHTML = `
           <div class="title-container">
             <img class="home-mini" src="./assets/img/logos/logo.png" alt="">
@@ -422,7 +395,6 @@ document.addEventListener('DOMContentLoaded', function()
       homeContainer.style.display = "flex";
       questionContainer.style.display = "none";
       index = 0;
-      shuffle(questions);
       answers = [];
       myReport = [
         { name: 'energy', score: 0 },
@@ -450,29 +422,15 @@ document.addEventListener('DOMContentLoaded', function()
         {name: "Lightning", score: 0, count: 0},
       ];
       characterScores = [];
-      compatibilityScoreTotal = 0;
     }
 
-    const instagram = document.getElementById("instagram");
-    instagram.addEventListener("click", () => {
-      copyCurrentUrl();
-    });
-
-    const threads = document.getElementById("threads");
-    threads.addEventListener("click", () => {
-      copyCurrentUrl();
-    });
-
-    const copy = document.getElementById("copy");
-    copy.addEventListener("click", () => {
-      copyCurrentUrl();
-    });
-
-    function copyCurrentUrl() {
-      const url = window.location.href;
-      navigator.clipboard.writeText(url)
-      
-      alert('Link copied!');
+    function selectChoice(item, question) {
+      if (selectedChoice) {
+        selectedChoice.classList.remove("selected");
+      }
+      item.classList.add("selected");
+      selectedChoice = item;
+      questionTrait = [question.trait, question.reverse];
     }
   }
 );
