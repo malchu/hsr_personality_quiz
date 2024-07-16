@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function()
     // start home page slideshow
     startSlideshow(images);
 
-    // button event listeners
+    // progress buttons
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", function() 
       {
@@ -86,6 +86,8 @@ document.addEventListener('DOMContentLoaded', function()
         restart();
       }
     });
+
+    // share buttons
     const instagram = document.getElementById("instagram");
     instagram.addEventListener("click", () => {
       copyCurrentUrl();
