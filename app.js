@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function()
               <tbody>
         `;
 
-        pathScores.forEach((path, index) => {
+        pathScores.slice(0, 3).forEach((path, index) => {
           tableHTML += `
             <tr>
               <td>${index + 1}</td>
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function()
               <tbody>
         `;
 
-        typeScores.forEach((type, index) => {
+        typeScores.slice(0, 3).forEach((type, index) => {
           tableHTML += `
             <tr>
               <td>${index + 1}</td>
